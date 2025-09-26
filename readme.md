@@ -3,7 +3,7 @@
 ## 📁 Proje Yapısı
 
 ```
-titanic-mlops/
+vscode/
 ├── src/                        # Kaynak kodlar
 │   ├── data_preprocess.py      # Veri inceleme ve önişlem
 │   ├── download_data.py        # Veri indirme
