@@ -1,0 +1,35 @@
+stages:
+  download_data:
+    cmd: python src/download_data.py
+    deps:
+    - src/download_data.py
+    outs:
+    - data/raw/iris.csv
+
+  data_preprocess:
+    cmd: python src/data_preprocess.py
+    deps:
+    - src/data_preprocess.py
+    - data/raw/iris.csv
+    outs:
+    - data/processed/X_train.npy
+    - data/processed/X_test.npy
+    - data/processed/y_train.npy
+    - data/processed/y_test.npy
+
+  train_model:
+    cmd: python src/train_model.py
+    deps:
+    - src/train_model.py
+    - data/processed/X_train.npy
+    - data/processed/X_test.npy
+    - data/processed/y_train.npy
+    - data/processed/y_test.npy
+    outs:
+    - models/random_forest_model.pkl
+    - models/logistic_regression_model.pkl
+    - models/svm_model.pkl
+    metrics:
+    - models/metrics_rf.json
+    - models/metrics_lg.json
+    - models/metrics_svm.json

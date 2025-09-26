@@ -7,8 +7,8 @@ import os
 from typing import Tuple
 
 logger = logging.getLogger(__name__)
-input_path=r"C:\Users\Ozbert\vscode\src\data\raw\iris.csv"
-output_dir=r"C:\Users\Ozbert\vscode\src\data\processed"
+input_path=r"C:\Users\Ozbert\vscode\data\raw\iris.csv"
+output_dir=r"C:\Users\Ozbert\vscode\data\processed"
 df = pd.read_csv(input_path)
 
 def preprocess_data(input_path) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:

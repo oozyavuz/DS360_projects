@@ -11,6 +11,7 @@ import logging
 import time
 from sklearn.model_selection import cross_val_score
 from typing import Dict, Any, Optional
+from sklearn.svm import SVC
 
 logger = logging.getLogger(__name__)
 
@@ -101,6 +102,40 @@ def train_model(X_train: np.ndarray, y_train: np.ndarray,
 
     logger.info(f"Random Forest tamamlandı - Accuracy: {accuracy:.4f}")
 
+     # 3. Support Vector Machine
+    logger.info("SVM eğitiliyor...")
+
+    model = SVC(kernel='rbf', random_state=42, probability=True)
+    model.fit(X_train, y_train)
+            
+    training_time = time.time() - start_time
+            
+    # Tahminler
+    y_pred = model.predict(X_test)
+    y_pred_proba = model.predict_proba(X_test)
+            
+    # Metrikler
+    accuracy = accuracy_score(y_test, y_pred)
+    cv_scores = cross_val_score(model, X_train, y_train, cv=5)
+
+    # Metrikleri kaydet
+    metrics = {
+        'model_type': 'SVM',
+        'accuracy': float(accuracy),
+        'n_train_samples': len(X_train),
+        'n_test_samples': len(X_test)
+    }
+
+    # Model ve metrik kaydet
+    os.makedirs('models', exist_ok=True)
+    model_path = f'models/svm_model.pkl'
+    joblib.dump(model, model_path)
+
+    with open('models/metrics_svm.json', 'w') as f:
+        json.dump(metrics, f, indent=2)
+
+    logger.info(f"SVM tamamlandı - Accuracy: {accuracy:.4f}")
+    
     return model,metrics
 
 if __name__ == "__main__":

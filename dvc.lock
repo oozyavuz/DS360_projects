@@ -1,0 +1,90 @@
+schema: '2.0'
+stages:
+  download_data:
+    cmd: python src/download_data.py
+    deps:
+    - path: src/download_data.py
+      hash: md5
+      md5: b00defc3b3b857931e87cbb26d5697a1
+      size: 779
+    outs:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 21d441a28bce4417276097df955afc50
+      size: 2928
+  data_preprocess:
+    cmd: python src/data_preprocess.py
+    deps:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 21d441a28bce4417276097df955afc50
+      size: 2928
+    - path: src/data_preprocess.py
+      hash: md5
+      md5: 6950eac129879b5f9e13d0d77089fee0
+      size: 4154
+    outs:
+    - path: data/processed/X_test.npy
+      hash: md5
+      md5: 8ccd718861a6010905f00c44ee92ee5a
+      size: 1088
+    - path: data/processed/X_train.npy
+      hash: md5
+      md5: bd3c8ca755a6dff9b2605298a5a93822
+      size: 3968
+    - path: data/processed/y_test.npy
+      hash: md5
+      md5: c8a14810d1d66e69e3149abda346c748
+      size: 368
+    - path: data/processed/y_train.npy
+      hash: md5
+      md5: 2c2741a338b44cc698b03ddaddd77a6a
+      size: 1088
+  train_model:
+    cmd: python src/train_model.py
+    deps:
+    - path: data/processed/X_test.npy
+      hash: md5
+      md5: 8ccd718861a6010905f00c44ee92ee5a
+      size: 1088
+    - path: data/processed/X_train.npy
+      hash: md5
+      md5: bd3c8ca755a6dff9b2605298a5a93822
+      size: 3968
+    - path: data/processed/y_test.npy
+      hash: md5
+      md5: c8a14810d1d66e69e3149abda346c748
+      size: 368
+    - path: data/processed/y_train.npy
+      hash: md5
+      md5: 2c2741a338b44cc698b03ddaddd77a6a
+      size: 1088
+    - path: src/train_model.py
+      hash: md5
+      md5: 480a8a02001ccdb65bc9fa4b229349f1
+      size: 4487
+    outs:
+    - path: models/logistic_regression_model.pkl
+      hash: md5
+      md5: 956e7b2453fb416b67f2b6aa85881eee
+      size: 991
+    - path: models/metrics_lg.json
+      hash: md5
+      md5: 01950cbc488847f8052c9953daa2df06
+      size: 130
+    - path: models/metrics_rf.json
+      hash: md5
+      md5: cbbacbf496231d8427d0175598e234a5
+      size: 109
+    - path: models/metrics_svm.json
+      hash: md5
+      md5: 18236ed766d33a020c0a6686547de287
+      size: 114
+    - path: models/random_forest_model.pkl
+      hash: md5
+      md5: 02b525095c68263bfe1449087e82e0b4
+      size: 167713
+    - path: models/svm_model.pkl
+      hash: md5
+      md5: 792a4481f9dc32576a4d58ab3c0e42d6
+      size: 4979
