@@ -12,11 +12,14 @@ def download_iris_data():
     # veri setini yükle
     iris = load_iris()
     df = pd.DataFrame(iris.data, columns=iris.feature_names)
+
+    # Hedef etiketi ekle
+    df['target'] = iris.target
     
     # Ham veriyi kaydet
     df.to_csv('data/raw/iris.csv', index=False)
     
-    print("✅ İris veri seti indirildi: data/raw/titanic.csv")
+    print("✅ İris veri seti indirildi: data/raw/iris.csv")
     print(f"Veri boyutu: {df.shape}")
     print(f"Kolonlar: {list(df.columns)}")
     print(f"Eksik değerler:\n{df.isnull().sum()}")
