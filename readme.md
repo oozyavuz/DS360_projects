@@ -29,7 +29,7 @@ vscode/
 
 ```bash
 git clone <repo-url>
-cd titanic-mlops
+cd vscode
 pip install -r requirements.txt
 ```
 
