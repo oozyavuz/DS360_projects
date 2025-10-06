@@ -1,0 +1,36 @@
+*.pyc
+__pycache__/
+venv/
+env/
+.mvenv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files (ignore large datasets but keep essential ones)
+data/*.csv
+data/*.json
+data/*.xlsx
+!data/sample_data.csv
+!data/loan_data.csv
+
+# Models (ignore models/ directory but keep artifacts/)
+models/
+*.pkl
+*.joblib
+
+# Keep artifacts for deployment
+!artifacts/
+!artifacts/*.pkl
+!artifacts/*.json
+
+# Streamlit
+.streamlit/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

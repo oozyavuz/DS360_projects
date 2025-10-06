@@ -1,0 +1,8 @@
+*.pyc
+__pycache__/
+.mvenv/
+
+# Large dataset files
+*.csv
+data/raw/
+data/processed/
