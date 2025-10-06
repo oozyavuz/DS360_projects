@@ -3,7 +3,7 @@
 ## 📁 Proje Yapısı
 
 ```
-titanic-mlops/
+vscode/
 ├── src/                        # Kaynak kodlar
 │   ├── data_preprocess.py      # Veri inceleme ve önişlem
 │   ├── download_data.py        # Veri indirme
@@ -29,7 +29,7 @@ titanic-mlops/
 
 ```bash
 git clone <repo-url>
-cd titanic-mlops
+cd vscode
 pip install -r requirements.txt
 ```
 
